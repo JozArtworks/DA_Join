@@ -1,39 +1,33 @@
 <section class="header-section-desktop">
   <p class="header-title">Kanban Project Management Tool</p>
-  <a  (click)="authService.isLoggedIn() ? toSummary() : backToLogin()" routerLink="/"><img class="header-logo" src="./assets/icons/header/logo.svg" alt="Join Logo"></a>
+  <a (click)="authService.isLoggedIn() ? toSummary() : backToLogin()" routerLink="/"><img class="header-logo"
+      src="./assets/icons/header/logo.svg" alt="Join Logo"></a>
   <div class="menu-section">
-    <a routerLink="/help"
-      ><img class="help-icon" src="./assets/icons/header/help.svg" alt=""
-    /></a>
+    <a routerLink="/help"><img class="help-icon" src="./assets/icons/header/help.svg" alt="" /></a>
     <button class="menu-button" (click)="onMenuButtonClick($event); $event.stopPropagation()">
       @if (authService.isLoggedIn()) {
-        {{ this.authService.activeInitials() }}
+      @if (authService.getCurrentUser()?.email === 'admin@join.com') {
+      GU
       } @else {
-        <img src="./assets/icons/header/menu.svg" alt="Menu Button">
+      {{ authService.activeInitials() }}
+      }
+      } @else {
+      <img src="./assets/icons/header/menu.svg" alt="Menu Button">
       }
     </button>
-
     @if (dropdownVisible) {
     <div class="dropdown-menu" [class.show]="showDropdown" (click)="$event.stopPropagation()">
       <div class="router-wrapper">
         <a (click)="toggleDropdown()" routerLink="/help">Help</a>
-        <a (click)="toggleDropdown()" routerLink="/legal-notice"
-          >Legal Notice</a
-        >
-        <a (click)="toggleDropdown()" routerLink="/privacy-policy"
-          >Privacy Policy</a
-        >
-          <p (click)="toggleDropdown(); logout()">
-            @if (authService.isLoggedIn()) {Log out} @else { To Login }
-          </p>
+        <a (click)="toggleDropdown()" routerLink="/legal-notice">Legal Notice</a>
+        <a (click)="toggleDropdown()" routerLink="/privacy-policy">Privacy Policy</a>
+        <p (click)="toggleDropdown(); logout()">
+          @if (authService.isLoggedIn()) {Log out} @else { To Login }
+        </p>
       </div>
     </div>
-
     } @if (logoutPopupVisible) {
-      <button 
-      class="logout-popup-btn" 
-      [class.show]="showLogoutPopup" 
-      (click)="logout()">
+    <button class="logout-popup-btn" [class.show]="showLogoutPopup" (click)="logout()">
       @if (authService.isLoggedIn()) {Log out} @else { To Login }
     </button>
     }

@@ -27,10 +27,10 @@ export class HeaderComponent {
    * Initializes the HeaderComponent.
    * @param router Angular Router for navigation.
    */
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   /** Sets current user initials. */
-  async ngOnInit(){
+  async ngOnInit() {
     await this.authService.setActiveUserInitials();
   }
 
@@ -129,6 +129,5 @@ export class HeaderComponent {
     this.signalService.hideHrefs.set(false);
     this.router.navigate(['login']);
   };
-
 
 }

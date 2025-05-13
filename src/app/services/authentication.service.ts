@@ -33,7 +33,7 @@ export class AuthenticationService {
 
   constructor(private router: Router) {
     this.auth = getAuth();
-    this.checkAuthStatus(); 
+    this.checkAuthStatus();
   }
 
 
@@ -141,7 +141,7 @@ export class AuthenticationService {
   checkAuthStatus() {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
-        this.isAuthenticated.set(true); 
+        this.isAuthenticated.set(true);
         this.router.navigate(['/summary']); // after refresh to summary
       } else {
         this.isAuthenticated.set(false);
@@ -207,6 +207,11 @@ export class AuthenticationService {
       console.error("Deleting active user failed", error);
     }
   }
+
+  getCurrentUser() {
+    return getAuth().currentUser;
+  }
+
 }
 
 
