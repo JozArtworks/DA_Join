@@ -312,4 +312,6 @@ export class ContactDialogComponent implements OnInit, OnDestroy {
     return nameValid && mailValid && phoneValid;
   }
 
+  //Test Fork!
+
 }
