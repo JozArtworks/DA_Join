@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "join-3324b"
+    "default": "join-49dab"
   },
   "targets": {
-    "join-3324b": {
+    "join-49dab": {
       "hosting": {
         "join": [
-          "join-3324b"
+          "join-49dab"
         ]
       }
     }
