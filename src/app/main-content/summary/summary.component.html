@@ -1,12 +1,12 @@
 <section class="summary-main">
   @if (showWelcome) {
-  <aside class="summary-welcome-mobil" [class]="{ 
-    'fade-in': signalService.signingIn(), 
-    'fade-out': fadeOutWelcome 
+  <aside class="summary-welcome-mobil" [class]="{
+    'fade-in': signalService.signingIn(),
+    'fade-out': fadeOutWelcome
   }">
     <h4 class="timeText">
       <span class="greeting">{{ textChangeTime() }}</span>
-      @if (authService.activeUserName !== 'G U') {
+      @if (authService.activeUserName !== 'Guest') {
       <span class="comma">,</span><br>
       <span class="user-name">{{ authService.activeUserName }}</span>
       } @else {
@@ -83,7 +83,7 @@
     <aside class="summary-welcome">
       <h4 class="timeText">
         <span class="greeting">{{ textChangeTime() }}</span>
-        @if (authService.activeUserName !== 'G U') {
+        @if (authService.activeUserName !== 'Guest') {
         <span class="comma">,</span><br />
         <span class="user-name">{{ authService.activeUserName }}</span>
         } @else {

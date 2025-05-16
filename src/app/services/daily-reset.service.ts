@@ -14,7 +14,7 @@ export class DailyResetService {
   taskService = inject(TasksService);
   contactsService = inject(ContactsService);
   firestore: Firestore = inject(Firestore);
-  
+
   constructor() { }
 
   /**  Returns the current date as a string in YYYY-MM-DD format. */
@@ -35,9 +35,10 @@ export class DailyResetService {
    * Runs the reset procedure: deletes all current contacts and tasks,
    * then adds dummy contacts and tasks.
    */
-  runReset() {
-    this.deleteAllContacts();
-    this.deleteAllTasks();
+  async runReset() {
+    await this.deleteAllContacts();
+    this.contactsService.contacts = [];
+    await this.deleteAllTasks();
     this.createDummyContacts();
     setTimeout(() => {
       this.createDummyTasks();
@@ -62,7 +63,7 @@ export class DailyResetService {
       console.error('Error reading current timestamp:', err);
     }
   }
-  
+
   /** Creates and adds dummy tasks after assigning them to contacts. */
   createDummyTasks() {
     this.setDummyAssignees();
