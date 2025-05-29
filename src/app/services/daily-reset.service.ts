@@ -37,12 +37,18 @@ export class DailyResetService {
    */
   async runReset() {
     await this.deleteAllContacts();
-    this.contactsService.contacts = [];
     await this.deleteAllTasks();
-    this.createDummyContacts();
+    await this.createDummyContacts();
     setTimeout(() => {
       this.createDummyTasks();
     }, 200);
+    // await this.deleteAllContacts();
+    // this.contactsService.contacts = [];
+    // await this.deleteAllTasks();
+    // this.createDummyContacts();
+    // setTimeout(() => {
+    //   this.createDummyTasks();
+    // }, 200);
   }
 
   /**
